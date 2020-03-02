@@ -34,24 +34,13 @@ import java.util.ArrayList;
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-
-//	@Bean(name = "myAuthenticationManager")
-//	@Override
-//	public AuthenticationManager authenticationManagerBean() throws Exception {
-//		return super.authenticationManagerBean();
-//	}
-
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		
 		http
 			.authorizeRequests()
-				.antMatchers("/","/swagger-ui**", "/swagger-ui.html#/**")
-				.permitAll()
-			.and()
-				.authorizeRequests()
-				.anyRequest()
-				.fullyAuthenticated()
+			.anyRequest()
+			.fullyAuthenticated()
 			.and().csrf().disable()
 			.cors()
 			.and()
